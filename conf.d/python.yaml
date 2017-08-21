@@ -1,0 +1,10 @@
+init_config:
+    default_timeout: 5
+
+instances:
+    -   url: https://google.com
+
+    -   url: http://14.142.119.130:5000/delay/10
+        timeout: 8
+
+    -   url: http://14.142.119.130:5000/status/400
