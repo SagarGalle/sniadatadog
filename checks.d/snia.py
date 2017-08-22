@@ -11,7 +11,8 @@ class HTTPCheck(AgentCheck):
             return
 
         # Load values from the instance config
-        url = instance['http://14.142.119.130:5000']
+        url = instance['url']
+	print "url is loaded"
         default_timeout = self.init_config.get('default_timeout', 5)
         timeout = float(instance.get('timeout', default_timeout))
 
@@ -53,10 +54,11 @@ class HTTPCheck(AgentCheck):
         })
 
 if __name__ == '__main__':
-    check, instances = HTTPCheck.from_yaml('/etc/dd-agent/conf.d/http.yaml')
+
+    check, instances = HTTPCheck.from_yaml('/etc/dd-agent/conf.d/snia.yaml')
     for instance in instances:
         print "\nRunning the check against url: %s" % (instance['url'])
         check.check(instance)
         if check.has_events():
             print 'Events: %s' % (check.get_events())
-        print 'Metrics: %s' % (check.get_metrics())
+        print 'Metrics: %s'i % (check.get_metrics())
